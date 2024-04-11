@@ -107,29 +107,34 @@ namespace LinqExercise
 
             //TODO: Print the Sum of the employees' YearsOfExperience
             //if their YOE is less than or equal to 10 AND Age is greater than 35.
-            Console.WriteLine("Years of experience, 10 or less, age greater than 35");
+            Console.WriteLine("Total Employees years of experience");
             Console.WriteLine("");
-            var oneC = employees.OrderBy(x => x.YearsOfExperience <= 10).OrderBy(x => x.Age >35);
-
-            foreach(var x in oneC)
-            {
-                Console.WriteLine($"YOE: {x.YearsOfExperience} Age:{x.Age}");
-            }
+            var oneC = employees.OrderBy(x => x.YearsOfExperience <= 10).OrderBy(x => x.Age >35).Sum(x => x.YearsOfExperience);
+            Console.WriteLine($"{oneC}");
+            //foreach(var x in oneC)
+            //{
+            //    Console.WriteLine($"YOE: {x.YearsOfExperience} Age:{x.Age}");
+            //}
 
 
             //TODO: Now print the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10
             //AND Age is greater than 35.
             Console.WriteLine("Average YOE is equal or less than 10, and Age is greater than 35");
             Console.WriteLine("");
-            var YOE = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35);
-            foreach(var item in YOE)
-            {
-                Console.WriteLine($"YOE:{item.YearsOfExperience} Age :{item.Age}");
-            }
+            var YOE = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35).Sum(x => x.YearsOfExperience);
+            Console.WriteLine($"{YOE}");
+
+            //fixed had to take Years of experience and get the sum. Return the sum
+
+            //foreach(var item in YOE)
+            //{
+            //    Console.WriteLine($"YOE:{item.YearsOfExperience} Age :{item.Age}");
+            //}
 
 
             //TODO: Add an employee to the end of the list without using employees.Add()
-           employees=  employees.Append(new Employee("Yoon", "Cha", 45, 1)).ToList();
+            Console.WriteLine("List of Employess");
+            employees =  employees.Append(new Employee("Yoon", "Cha", 45, 1)).ToList();
             foreach(var item in employees)
             {
                 Console.WriteLine($"Age: {item.Age} Name: {item.FullName}");
